@@ -88,23 +88,23 @@ class _LoginScreenState extends State<LoginScreen> {
                       Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
+                            Container(
+                                child: const Text(
+                              "Don't have an account?",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            )),
                             GestureDetector(
                               onTap: () => Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => SignUpScreen())),
                               child: Container(
-                                child: Text("Don't have an account?"),
+                                child: Text("Sign up"),
                                 padding: EdgeInsets.symmetric(vertical: 8),
                               ),
                             ),
-                            Container(
-                                child: const Text(
-                              'Sign up',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ))
                           ])
                     ]))));
   }

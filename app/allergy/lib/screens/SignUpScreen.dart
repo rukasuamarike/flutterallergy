@@ -50,11 +50,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       //circular widget to accept and show our selected file
                       Stack(children: [
                         const SizedBox(height: 24),
-                        //text field input for username
+                        //text field input for name
                         TextFieldInput(
                             textEditingController: _nameController,
                             hintText: 'Enter your name',
-                            textInputType: TextInputType.text),
+                            textInputType: TextInputType.name),
                         //add space between the text fields
                         const SizedBox(height: 24),
                         //text field for email
@@ -99,6 +99,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
+                              Container(
+                                  child: const Text(
+                                'Already have an account?',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              )),
                               GestureDetector(
                                 onTap: () => Navigator.push(
                                     context,
@@ -107,16 +114,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 child: Container(
                                   padding:
                                       const EdgeInsets.symmetric(vertical: 8),
-                                  child: const Text("Already have an account?"),
+                                  child: const Text("Login"),
                                 ),
                               ),
-                              Container(
-                                  child: const Text(
-                                'Login',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ))
                             ])
                       ])
                     ]))));
