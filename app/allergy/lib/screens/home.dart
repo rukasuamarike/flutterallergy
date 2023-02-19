@@ -1,3 +1,4 @@
+import 'package:allergy/screens/AddAllergyScreen.dart';
 import 'package:allergy/screens/LoginScreen.dart';
 import 'package:allergy/screens/cameraPage.dart';
 import 'package:camera/camera.dart';
@@ -32,11 +33,22 @@ class _HomeState extends State<Home> {
                                 .then((value) => Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (_) =>
+                                          builder: (context) =>
                                               CameraApp(cameras: value)),
                                     ))
                           },
                       child: Text("open camera")),
+                  ElevatedButton(
+                      onPressed: () async => {
+                            await availableCameras()
+                                .then((value) => Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              AddAllergyScreen()),
+                                    ))
+                          },
+                      child: Text("my allergies")),
                 ],
               ),
             ),

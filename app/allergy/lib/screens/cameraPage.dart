@@ -42,39 +42,39 @@ class _CameraAppState extends State<CameraApp> {
     try {
       await controller.setFlashMode(FlashMode.off);
       XFile k = await controller.takePicture();
-      String b64_image =
-          await k.readAsBytes().then((value) => base64Encode(value));
+      // String b64_image =
+      //     await k.readAsBytes().then((value) => base64Encode(value));
 
-      var uri = 'http://127.0.0.1:5000/find-allergens-in-image';
+      // var uri = 'http://127.0.0.1:5000/find-allergens-in-image';
 
-      Map data = {
-        'userID': 'VG7TtCGO49oNUZ8VFTuz',
-        'allergens': [],
-        'hasAllergens': false,
-        'image': b64_image
-      };
-      var body = json.encode(data);
+      // Map data = {
+      //   'userID': 'VG7TtCGO49oNUZ8VFTuz',
+      //   'allergens': [],
+      //   'hasAllergens': false,
+      //   'image': b64_image
+      // };
+      // var body = json.encode(data);
 
-      var response = await http.post(Uri.parse(uri),
-          headers: {"Content-Type": "application/json"}, body: body);
-      // if (response.statusCode == 201) {
-      var imgFile = ImgFile.fromJson(json.decode(response.body));
-      var decoded = base64.decode(imgFile.image);
+      // var response = await http.post(Uri.parse(uri),
+      //     headers: {"Content-Type": "application/json"}, body: body);
+      // // if (response.statusCode == 201) {
+      // var imgFile = ImgFile.fromJson(json.decode(response.body));
+      // var decoded = base64.decode(imgFile.image);
 
-      final _directory = await getTemporaryDirectory();
-      File file = await File('${_directory.path}/final-image.jpg').create();
-      file.writeAsBytesSync(decoded);
+      // final _directory = await getTemporaryDirectory();
+      // File file = await File('${_directory.path}/final-image.jpg').create();
+      // file.writeAsBytesSync(decoded);
 
-      XFile final_image = XFile('${_directory.path}/final-image.jpg');
-      // } else {
-      //   throw Exception("failed to load picture");
-      // }
+      // XFile final_image = XFile('${_directory.path}/final-image.jpg');
+      // // } else {
+      // //   throw Exception("failed to load picture");
+      // // }
 
       Navigator.push(
           context,
           MaterialPageRoute(
               builder: (context) => PreviewPage(
-                    picture: final_image,
+                    picture: k, //final_image,
                   )));
     } on CameraException catch (e) {
       debugPrint('Error occured while taking picture: $e');
