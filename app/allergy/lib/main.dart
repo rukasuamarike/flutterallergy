@@ -1,3 +1,4 @@
+import 'package:allergy/screens/cameraPage.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -44,7 +45,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   @override
-  Future<Widget> build(BuildContext context) async {
+  Widget build(BuildContext context) {
     return Container(
       child: Column(
         children: [
