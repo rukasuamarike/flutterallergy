@@ -43,82 +43,76 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Flexible(child: Container(), flex: 2),
                       //logo
-                      const SizedBox(height: 64),
 
-                      //circular widget to accept and show our selected file
-                      Stack(children: [
-                        const SizedBox(height: 24),
-                        //text field input for name
-                        TextFieldInput(
-                            textEditingController: _nameController,
-                            hintText: 'Enter your name',
-                            textInputType: TextInputType.name),
-                        //add space between the text fields
-                        const SizedBox(height: 24),
-                        //text field for email
-                        TextFieldInput(
-                            textEditingController: _emailController,
-                            hintText: 'Enter your email',
-                            textInputType: TextInputType.emailAddress),
-                        //add space between the text fields
-                        const SizedBox(height: 24),
-                        //text field for pw
-                        TextFieldInput(
-                          textEditingController: _passwordController,
-                          hintText: 'Enter your password',
-                          textInputType: TextInputType.text,
-                          isPass: true,
-                        ),
+                      //text field input for name
+                      TextFieldInput(
+                          textEditingController: _nameController,
+                          hintText: 'Enter your name',
+                          textInputType: TextInputType.name),
+                      //add space between the text fields
+                      const SizedBox(height: 24),
+                      //text field for email
+                      TextFieldInput(
+                          textEditingController: _emailController,
+                          hintText: 'Enter your email',
+                          textInputType: TextInputType.emailAddress),
+                      //add space between the text fields
+                      const SizedBox(height: 24),
+                      //text field for pw
+                      TextFieldInput(
+                        textEditingController: _passwordController,
+                        hintText: 'Enter your password',
+                        textInputType: TextInputType.text,
+                        isPass: true,
+                      ),
 
-                        const SizedBox(height: 24),
-                        //login button
-                        InkWell(
-                          onTap: () {},
-                          child: Container(
-                              width: double.infinity,
-                              alignment: Alignment.center,
-                              padding: const EdgeInsets.symmetric(vertical: 12),
-                              decoration: const ShapeDecoration(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(4))),
-                                  color: Colors.blue),
-                              child: _isLoading
-                                  ? const Center(
-                                      child: CircularProgressIndicator(
-                                          color: Colors.white),
-                                    )
-                                  : const Text('Sign up')),
-                        ),
-                        const SizedBox(height: 12),
-                        Flexible(child: Container(), flex: 2),
+                      const SizedBox(height: 24),
+                      //login button
+                      InkWell(
+                        onTap: () {},
+                        child: Container(
+                            width: double.infinity,
+                            alignment: Alignment.center,
+                            padding: const EdgeInsets.symmetric(vertical: 12),
+                            decoration: const ShapeDecoration(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(4))),
+                                color: Colors.blue),
+                            child: _isLoading
+                                ? const Center(
+                                    child: CircularProgressIndicator(
+                                        color: Colors.white),
+                                  )
+                                : const Text('Sign up')),
+                      ),
+                      const SizedBox(height: 12),
+                      Flexible(child: Container(), flex: 2),
 
-                        //sign up button
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                  child: const Text(
-                                'Already have an account?',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              )),
-                              GestureDetector(
-                                onTap: () => Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => LoginScreen())),
-                                child: Container(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 8),
-                                  child: const Text("Login"),
-                                ),
+                      //sign up button
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                                child: const Text(
+                              'Already have an account?',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
                               ),
-                            ])
-                      ])
+                            )),
+                            GestureDetector(
+                              onTap: () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => LoginScreen())),
+                              child: Container(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 8),
+                                child: const Text("Login"),
+                              ),
+                            ),
+                          ])
                     ]))));
   }
 }
