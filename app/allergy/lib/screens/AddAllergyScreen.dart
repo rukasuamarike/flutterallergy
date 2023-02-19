@@ -1,8 +1,19 @@
 import 'package:allergy/screens/AllergyScreen.dart';
 import 'package:allergy/widgets/text_field_input.dart';
+import 'package:allergy/widgets/user.dart';
+import 'package:allergy/widgets/user.dart';
+import 'package:allergy/widgets/user.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:provider/provider.dart';
+
+import '../widgets/user.dart';
+import '../widgets/user.dart';
 
 class AddAllergyScreen extends StatefulWidget {
   const AddAllergyScreen({super.key});
@@ -12,22 +23,39 @@ class AddAllergyScreen extends StatefulWidget {
 }
 
 class _AddAllergyScreenState extends State<AddAllergyScreen> {
-  final TextEditingController _allergyController = TextEditingController();
+  String _allergyController = "";
 
   //clear the text box
-  void dispose() {
-    _allergyController.dispose();
-  }
 
   //add an allergy once user enters it
-  void addAllergy() {
-    if (_allergyController.text.isNotEmpty) {
-      //add to firebase
+  void addAllergy(String uid, List<String> als) async {
+    if (_allergyController.isNotEmpty) {
+      List<String> cool = als;
+      FirebaseFirestore.instance.collection("users").doc(uid);
+      DocumentReference<Map<String, dynamic>> docref =
+          FirebaseFirestore.instance.collection('users').doc(uid);
+      Map<String, dynamic> data = {"allergies": cool};
+      await docref.set(data, SetOptions(merge: true));
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    User user = Provider.of<User>(context);
+
+    List<String> bonk = [
+      "egg",
+      "nuts",
+      "dairy",
+      "shellfish",
+      "sesame",
+      "gluten",
+      "soy",
+      "avocado"
+    ];
+
+    List<String> adds = [];
+
     return Scaffold(
         body: SafeArea(
             child: Container(
@@ -36,9 +64,19 @@ class _AddAllergyScreenState extends State<AddAllergyScreen> {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      //login button
+                      SafeArea(
+                          child: ListView.builder(
+                              itemCount: bonk.length,
+                              shrinkWrap: true,
+                              itemBuilder: (context, i) => ListTile(
+                                    title: Text(bonk[i]),
+                                    onTap: () =>
+                                        {_allergyController += '${bonk[i]},'},
+                                  ))),
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          addAllergy(user.uid, _allergyController.split(","));
+                        },
                         child: Container(
                           width: double.infinity,
                           alignment: Alignment.center,

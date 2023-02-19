@@ -86,19 +86,19 @@ class _CameraAppState extends State<CameraApp> {
             body: SafeArea(
                 child: Stack(children: [
       CameraPreview(controller),
-      Positioned(
-          left: (MediaQuery.of(context).size.width / 2) - 10,
-          bottom: MediaQuery.of(context).size.height / 5,
+      Align(
+          alignment: Alignment.bottomCenter,
           child: Container(
+              height: MediaQuery.of(context).size.height / 5,
               decoration: const BoxDecoration(
-            borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
-            color: Colors.white,
-          ))),
+                borderRadius: BorderRadius.vertical(top: Radius.circular(80)),
+                color: Colors.white,
+              ))),
       Positioned(
-          left: (MediaQuery.of(context).size.width / 2) - 10,
-          bottom: MediaQuery.of(context).size.height / 5,
+          left: (MediaQuery.of(context).size.width / 2) - 20,
+          bottom: MediaQuery.of(context).size.height / 16,
           child: IconButton(
-              iconSize: 20.0,
+              iconSize: 40.0,
               onPressed: () => {takePicture()},
               icon: Icon(Icons.camera_alt_rounded))),
     ]))));
