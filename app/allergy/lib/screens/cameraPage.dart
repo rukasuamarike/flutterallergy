@@ -2,7 +2,6 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:microphone/microphone.dart';
 import 'package:video_player/video_player.dart';
 import 'package:flutter/scheduler.dart';
 
@@ -22,12 +21,10 @@ class CameraApp extends StatefulWidget {
 
 class _CameraAppState extends State<CameraApp> {
   late CameraController controller;
-  late MicrophoneRecorder _recorder;
 
   @override
   void initState() {
     super.initState();
-    _initRecorder();
     controller = CameraController(widget.cameras[0], ResolutionPreset.max);
     controller.initialize().then((_) {
       if (!mounted) {
@@ -51,19 +48,7 @@ class _CameraAppState extends State<CameraApp> {
   @override
   void dispose() {
     controller.dispose();
-    _recorder.dispose();
     super.dispose();
-  }
-
-  void _initRecorder() {
-    // Dispose the previous recorder.
-    _recorder?.dispose();
-
-    _recorder = MicrophoneRecorder()
-      ..init()
-      ..addListener(() {
-        setState(() {});
-      });
   }
 
   @override
