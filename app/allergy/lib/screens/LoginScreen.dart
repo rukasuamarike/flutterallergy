@@ -43,6 +43,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       Flexible(child: Container(), flex: 2),
                       //add logo
+                      Text("ALLESCAN",
+                          style: TextStyle(
+                              fontSize: 20,
+                              backgroundColor:
+                                  Color.fromARGB(255, 144, 238, 144))),
+                      Spacer(),
                       const SizedBox(height: 64),
                       //text field for email
                       TextFieldInput(

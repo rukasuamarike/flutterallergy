@@ -1,3 +1,4 @@
+import 'package:allergy/screens/AddAllergyScreen.dart';
 import 'package:allergy/screens/LoginScreen.dart';
 import 'package:allergy/screens/cameraPage.dart';
 import 'package:camera/camera.dart';
@@ -22,23 +23,28 @@ class _HomeState extends State<Home> {
     return (user != null)
         ? Scaffold(
             body: Center(
-              child: Column(
-                children: [
-                  SizedBox(height: MediaQuery.of(context).size.width / 3),
-                  Text("home"),
-                  ElevatedButton(
-                      onPressed: () async => {
-                            await availableCameras()
-                                .then((value) => Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (_) =>
-                                              CameraApp(cameras: value)),
-                                    ))
-                          },
-                      child: Text("open camera")),
-                ],
-              ),
+              child: Column(children: [
+                SizedBox(height: MediaQuery.of(context).size.width / 3),
+                Text("home"),
+                ElevatedButton(
+                    onPressed: () async => {
+                          await availableCameras()
+                              .then((value) => Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (_) =>
+                                            CameraApp(cameras: value)),
+                                  ))
+                        },
+                    child: Text("open camera")),
+                ElevatedButton(
+                    onPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => AddAllergyScreen()),
+                        ),
+                    child: Text("my allergies"))
+              ]),
             ),
           )
         : SignUpScreen();

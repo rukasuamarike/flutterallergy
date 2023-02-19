@@ -46,7 +46,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       //logo
-
+                      Spacer(),
+                      Text("ALLESCAN",
+                          style: TextStyle(
+                              fontSize: 20,
+                              backgroundColor:
+                                  Color.fromARGB(255, 144, 238, 144))),
+                      Spacer(),
                       //text field input for name
                       TextFieldInput(
                           textEditingController: _nameController,
