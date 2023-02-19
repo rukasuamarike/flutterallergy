@@ -4,9 +4,7 @@ import 'firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 void main() async {
-
   runApp(MyApp());
-
 }
 
 class MyApp extends StatefulWidget {
@@ -19,9 +17,12 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Home(),)
+    return Scaffold(
+      body: Home(),
+    );
   }
 }
+
 class Home extends StatefulWidget {
   const Home({super.key});
 
