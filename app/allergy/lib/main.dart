@@ -1,33 +1,38 @@
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_camera_practice/home_page_dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-void main(){
-  runApp(const algScan());
-  final cameras = await availableCameras();
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  final db = FirebaseFirestore.instance;
+
+  runApp(MyApp());
 }
 
-await availableCameras().then(
-  (value) => Navigator.push(
-    context, MaterialPageRoute(
-      builder: (_) => CameraPage(cameras: value)
-    ),
-  )
-);
-
-class algScan extends StatefulWidget{
-  const algScan({Key? key}) : super(key: key);
+class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context){
-    return const MaterialApp(
-      title: 'Flutter Camera Demo',
-      debugShowCheckedModeBanner: false,
-      home: HomePage(),
-    );
-  }
+  State<MyApp> createState() => _MyAppState();
+}
 
+class _MyAppState extends State<MyApp> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        home: Scaffold(
+      body: Home(),
+    ));
+  }
 }
 
 class Home extends StatefulWidget {
@@ -40,6 +45,19 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Container(
+      child: Column(
+        children: [
+          Text("home"),
+          ElevatedButton(onPressed: () => async{await availableCameras().then(
+  (value) => Navigator.push(
+    context, MaterialPageRoute(
+      builder: (_) => CameraPage(cameras: value)
+    ),
+  )
+);}, child: Text("open camera")),
+        ],
+      ),
+    );
   }
 }

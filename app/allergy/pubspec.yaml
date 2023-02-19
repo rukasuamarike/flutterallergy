@@ -39,6 +39,7 @@ dependencies:
   firebase_core: ^2.6.1
   flutterfire: ^0.0.1
   camera: ^0.10.3
+  cloud_firestore: ^4.4.2
 
 dev_dependencies:
   flutter_test:

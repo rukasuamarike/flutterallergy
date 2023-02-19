@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "228939723832",
+    "project_id": "allergyflutter",
+    "storage_bucket": "allergyflutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:228939723832:android:9462d26ce93c8ec117a2cd",
+        "android_client_info": {
+          "package_name": "com.example.allergy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "228939723832-uhullpnm6da3flrjit1oba3n6mnquif1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIHCPY7T81qgHfk9zWgvSwH39FZ_3yjNw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "228939723832-uhullpnm6da3flrjit1oba3n6mnquif1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "228939723832-36e22quonrseiqmrcumo7nn8fc5g5pmf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.allergy"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
