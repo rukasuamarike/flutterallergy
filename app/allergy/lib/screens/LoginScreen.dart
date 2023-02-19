@@ -64,7 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       const SizedBox(height: 24),
                       //login button
                       InkWell(
-                        onTap: () {},
+                        onTap: () async => loginUser(),
                         child: Container(
                             width: double.infinity,
                             alignment: Alignment.center,
