@@ -53,6 +53,7 @@ class _AddAllergyScreenState extends State<AddAllergyScreen> {
       "soy",
       "avocado"
     ];
+    List<num> cols = [0, 0, 0, 0, 0, 0, 0, 0];
 
     List<String> adds = [];
 
@@ -70,8 +71,13 @@ class _AddAllergyScreenState extends State<AddAllergyScreen> {
                               shrinkWrap: true,
                               itemBuilder: (context, i) => ListTile(
                                     title: Text(bonk[i]),
-                                    onTap: () =>
-                                        {_allergyController += '${bonk[i]},'},
+                                    tileColor: (cols[i] == 1)
+                                        ? Colors.red
+                                        : Colors.white,
+                                    onTap: () {
+                                      cols[i] = (cols[i] + 1) % 2;
+                                      _allergyController += '${bonk[i]},';
+                                    },
                                   ))),
                       InkWell(
                         onTap: () {
