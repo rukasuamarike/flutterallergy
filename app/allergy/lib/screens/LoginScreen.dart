@@ -23,7 +23,11 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void loginUser() async {
-    //function to log in user
+    if (_emailController.text.isNotEmpty &&
+        _passwordController.text.isNotEmpty) {
+      FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: _emailController.text, password: _passwordController.text);
+    }
   }
 
   @override

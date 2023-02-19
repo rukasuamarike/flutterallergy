@@ -42,6 +42,13 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Container(
+      child: Column(
+        children: [
+          Text("home"),
+          ElevatedButton(onPressed: () => {}, child: Text("open camera")),
+        ],
+      ),
+    );
   }
 }
