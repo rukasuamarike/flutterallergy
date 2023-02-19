@@ -39,8 +39,7 @@ class _MyAppState extends State<MyApp> {
               initialData: null),
         ],
         child: MaterialApp(
-            home: Scaffold(
-          body: Home(),
-        )));
+          home: Home(),
+        ));
   }
 }

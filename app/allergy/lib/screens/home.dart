@@ -5,6 +5,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'SignUpScreen.dart';
+
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -18,7 +20,8 @@ class _HomeState extends State<Home> {
     User? user = Provider.of<User?>(context);
 
     return (user != null)
-        ? Container(
+        ? Scaffold(
+            body: Container(
             child: Column(
               children: [
                 Text("home"),
@@ -35,7 +38,7 @@ class _HomeState extends State<Home> {
                     child: Text("open camera")),
               ],
             ),
-          )
-        : LoginScreen();
+          ))
+        : SignUpScreen();
   }
 }
