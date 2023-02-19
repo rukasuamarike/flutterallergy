@@ -26,7 +26,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   void signUpUser() async {
     if (_emailController.text.isNotEmpty &&
-        _passwordController.text.isNotEmpty) {
+        _passwordController.text.isNotEmpty &&
+        _nameController.text.isNotEmpty) {
       FirebaseAuth.instance
           .createUserWithEmailAndPassword(
               email: _emailController.text, password: _passwordController.text)
