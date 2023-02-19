@@ -1,3 +1,4 @@
+import 'package:allergy/screens/AddAllergyScreen.dart';
 import 'package:allergy/screens/LoginScreen.dart';
 import 'package:allergy/widgets/text_field_input.dart';
 import 'package:firebase_auth/firebase_auth.dart';

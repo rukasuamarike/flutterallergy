@@ -1,3 +1,4 @@
+import 'package:allergy/screens/AddAllergyScreen.dart';
 import 'package:allergy/widgets/text_field_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -38,24 +39,26 @@ class _AllergyScreenState extends State<AllergyScreen> {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Flexible(child: Container(), flex: 2),
-                      //add logo
-                      const SizedBox(height: 64),
                       Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            GestureDetector(
-                              onTap: () {},
+                            InkWell(
+                              onTap: () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          AddAllergyScreen())),
                               child: Container(
-                                child: Text("Add an allergy"),
-                                padding: EdgeInsets.symmetric(vertical: 8),
-                              ),
-                            ),
-                            GestureDetector(
-                              onTap: () {},
-                              child: Container(
-                                child: Text("Delete an allergy"),
-                                padding: EdgeInsets.symmetric(vertical: 8),
+                                width: double.infinity,
+                                alignment: Alignment.center,
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 12, horizontal: 5),
+                                decoration: const ShapeDecoration(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(4))),
+                                    color: Colors.blue),
+                                child: const Text("Add an allergy"),
                               ),
                             ),
                           ]),
