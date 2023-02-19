@@ -1,6 +1,7 @@
 import 'package:allergy/screens/AddAllergyScreen.dart';
 import 'package:allergy/screens/LoginScreen.dart';
 import 'package:allergy/widgets/text_field_input.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -32,7 +33,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
           .createUserWithEmailAndPassword(
               email: _emailController.text, password: _passwordController.text)
           .then((cred) =>
-              FirebaseAuth.instance.signInWithCredential(cred.credential!));
+              FirebaseAuth.instance.signInWithCredential(cred.credential!))
+          .then((value) => FirebaseFirestore.instance.doc(value.user!.uid).set({
+                "uid": value.user!.uid,
+                "allergies": [],
+                "name": _nameController.text
+              }, SetOptions(merge: true)));
     }
   }
 
