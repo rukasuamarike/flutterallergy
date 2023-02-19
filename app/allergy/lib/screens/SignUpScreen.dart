@@ -1,4 +1,6 @@
+import 'package:allergy/screens/LoginScreen.dart';
 import 'package:allergy/widgets/text_field_input.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -21,7 +23,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
     _nameController.dispose();
   }
 
-  void signUpUser() async {}
+  void signUpUser() async {
+    if (_emailController.text.isNotEmpty &&
+        _passwordController.text.isNotEmpty) {
+      FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+              email: _emailController.text, password: _passwordController.text)
+          .then((cred) =>
+              FirebaseAuth.instance.signInWithCredential(cred.credential!));
+    }
+  }
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,7 +100,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               GestureDetector(
-                                onTap: () {},
+                                onTap: () => Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => LoginScreen())),
                                 child: Container(
                                   padding:
                                       const EdgeInsets.symmetric(vertical: 8),

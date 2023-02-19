@@ -1,3 +1,4 @@
+import 'package:allergy/screens/SignUpScreen.dart';
 import 'package:allergy/widgets/text_field_input.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -88,7 +89,10 @@ class _LoginScreenState extends State<LoginScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             GestureDetector(
-                              onTap: () {},
+                              onTap: () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SignUpScreen())),
                               child: Container(
                                 child: Text("Don't have an account?"),
                                 padding: EdgeInsets.symmetric(vertical: 8),
