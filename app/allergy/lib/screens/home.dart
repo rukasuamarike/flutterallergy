@@ -21,24 +21,26 @@ class _HomeState extends State<Home> {
 
     return (user != null)
         ? Scaffold(
-            body: Container(
-            child: Column(
-              children: [
-                Text("home"),
-                ElevatedButton(
-                    onPressed: () async => {
-                          await availableCameras()
-                              .then((value) => Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (_) =>
-                                            CameraPage(cameras: value)),
-                                  ))
-                        },
-                    child: Text("open camera")),
-              ],
+            body: Center(
+              child: Column(
+                children: [
+                  SizedBox(height: MediaQuery.of(context).size.width / 3),
+                  Text("home"),
+                  ElevatedButton(
+                      onPressed: () async => {
+                            await availableCameras()
+                                .then((value) => Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (_) =>
+                                              CameraApp(cameras: value)),
+                                    ))
+                          },
+                      child: Text("open camera")),
+                ],
+              ),
             ),
-          ))
+          )
         : SignUpScreen();
   }
 }

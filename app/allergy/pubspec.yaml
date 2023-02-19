@@ -42,6 +42,8 @@ dependencies:
   cloud_firestore: ^4.4.2
   provider: ^6.0.5
   fluro: ^2.0.5
+  video_player: ^2.5.1
+  microphone: ^0.1.0
 
 dev_dependencies:
   flutter_test:
