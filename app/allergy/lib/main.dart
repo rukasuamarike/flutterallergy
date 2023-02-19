@@ -1,3 +1,6 @@
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_camera_practice/home_page_dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -46,7 +49,13 @@ class _HomeState extends State<Home> {
       child: Column(
         children: [
           Text("home"),
-          ElevatedButton(onPressed: () => {}, child: Text("open camera")),
+          ElevatedButton(onPressed: () => async{await availableCameras().then(
+  (value) => Navigator.push(
+    context, MaterialPageRoute(
+      builder: (_) => CameraPage(cameras: value)
+    ),
+  )
+);}, child: Text("open camera")),
         ],
       ),
     );
