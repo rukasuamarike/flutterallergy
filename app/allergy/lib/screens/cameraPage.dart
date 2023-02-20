@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:allergy/screens/PreviewPage.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
@@ -34,7 +36,21 @@ class _CameraAppState extends State<CameraApp> {
     }
     try {
       await controller.setFlashMode(FlashMode.off);
+      //XFile picture = await controller.takePicture();
       XFile picture = await controller.takePicture();
+      String b64_image =
+          await picture.readAsBytes().then((value) => base64Encode(value));
+
+      var uri = 'http://127.0.0.1:5000/find-allergens-in-image';
+
+      Map data = {
+        'userID': 'VG7TtCGO49oNUZ8VFTuz',
+        'allergens': [],
+        'hasAllergens': false,
+        'image': b64_image
+      };
+      var body = json.encode(data);
+      print(body);
       Navigator.push(
           context,
           MaterialPageRoute(
